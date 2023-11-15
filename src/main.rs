@@ -7,8 +7,6 @@ use winit::event::Event::*;
 
 use std::rc::Rc;
 
-use crate::flame::Root;
-use na::{Affine2, Point2, Rotation2, Similarity2, Translation2};
 use util_types::DebugIt;
 use wgpu_render::{render, Inputs, Inputs2};
 use winit::{
@@ -87,7 +85,7 @@ async fn run(event_loop: EventLoop<Event2>, window: Window) {
 
     let size: PhysicalSize<u32> = window.inner_size();
     // Backend "all" does not appear to be preferring VULKAN in wgpu 0.13, so use VULKAN explicitly for now.
-    let instance = wgpu::Instance::new(wgpu::Backends::VULKAN);
+    let instance = wgpu::Instance::new(wgpu::Backends::METAL);
     dbg!(&instance);
     let surface = unsafe { instance.create_surface(&window) };
     let adapter = instance
@@ -132,7 +130,7 @@ async fn run(event_loop: EventLoop<Event2>, window: Window) {
         format: surface_format,
         width: size.width,
         height: size.height,
-        present_mode: wgpu::PresentMode::Mailbox,
+        present_mode: wgpu::PresentMode::AutoVsync,
         alpha_mode: wgpu::CompositeAlphaMode::Opaque,
     };
 

@@ -5,13 +5,13 @@ authors = ["Craig Macomber <CraigM@CraigM.info>"]
 edition = "2021"
 
 [dependencies]
-nalgebra = "0.31.0"
+nalgebra = "0.31.4"
 log = { version = "0.4.17", features = ["max_level_warn", "release_max_level_info"] }
-wgpu = "0.14.0"
-winit = "0.27.2"
+wgpu = "0.14.2"
+winit = "0.27.5"
 pollster = "0.2.5"
-bytemuck = { version = "1.10.0", features = ["derive"] }
-image = { version = "0.24.2", default-features = false, features = ["png"] }
+bytemuck = { version = "1.12.3", features = ["derive"] }
+image = { version = "0.24.5", default-features = false, features = ["png"] }
 salsa = "0.16.1"
 num = { version = "0.4.0", default-features = false, features = [] }
 
